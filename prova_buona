@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>La tua sorpresa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  overflow:hidden;
+
+  /* SFONDO CONCERTO MARRACASH */
+  background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+}
+
+.container{
+  position:relative;
+  z-index:2;
+  padding:20px;
+}
+
+.preparati{
+  font-size:40px;
+  animation:fadeIn 2s ease;
+}
+
+.countdown{
+  font-size:60px;
+  font-weight:700;
+  color:#ff4e8a;
+  text-shadow:0 0 20px rgba(255,78,138,0.8);
+  margin-top:20px;
+  opacity:0;
+  transition:opacity 0.5s ease;
+}
+
+.reveal-text{
+  opacity:0;
+  transition:opacity 1s ease;
+  margin-top:20px;
+}
+
+.concert-title{
+  font-size:clamp(40px,10vw,65px);
+  color:#ff4e8a;
+  text-shadow:0 0 30px rgba(255,78,138,0.9);
+  line-height:1.1;
+}
+
+p{
+  font-size:22px;
+  line-height:1.4;
+}
+
+.ti-amo{
+  display:block;
+  margin-top:30px;
+  font-family:'Dancing Script',cursive;
+  font-size:40px;
+  color:#ff4e8a;
+  animation:pulseLove 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseLove{
+  0%,100%{transform:scale(1);opacity:0.8;}
+  50%{transform:scale(1.1);opacity:1;}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+</style>
+</head>
+
+<body onclick="startAudio()">
+
+<div class="overlay"></div>
+
+<div class="container">
+  <h2 class="preparati">Preparati...</h2>
+  <div class="countdown" id="countdown">5</div>
+
+  <div class="reveal-text" id="concertText">
+    <h1 class="concert-title">IL CONCERTO DI <br>MARRACASH 2026 🎤🔥</h1>
+    <p>Non potevo scegliere di meglio che portarti a vedere il King insieme a me. ❤️<br>Non vedo l'ora di viverlo assieme.</p>
+    <span class="ti-amo">Ti amo amore mio</span>
+  </div>
+</div>
+
+<audio id="myAudio" loop>
+  <source src="lei.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const audio = document.getElementById("myAudio");
+
+function startAudio(){
+  audio.play().catch(e => console.log("Audio attivo"));
+}
+
+window.onload = () => {
+  audio.volume = 0.8;
+  audio.play().catch(() => console.log("Clicca per musica"));
+
+  // Dopo 5 secondi dal preparati appare countdown
+  setTimeout(startCountdown,5000);
+};
+
+function startCountdown(){
+  const countdownEl = document.getElementById("countdown");
+  countdownEl.style.opacity = 1;
+  let count = 5;
+
+  const interval = setInterval(()=>{
+    countdownEl.textContent = count;
+    count--;
+    if(count<0){
+      clearInterval(interval);
+      countdownEl.style.opacity=0;
+      showConcertText();
+    }
+  },1000);
+}
+
+function showConcertText(){
+  const concertEl = document.getElementById("concertText");
+  concertEl.style.opacity = 1;
+
+  // animazione comparsa delle singole righe
+  const children = concertEl.children;
+  for(let i=0;i<children.length;i++){
+    children[i].style.opacity=0;
+    setTimeout(()=>{
+      children[i].style.transition='opacity 1s ease';
+      children[i].style.opacity=1;
+    }, i*800);
+  }
+}
+</script>
+
+</body>
+</html>
