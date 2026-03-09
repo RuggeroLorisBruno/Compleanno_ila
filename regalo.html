@@ -16,7 +16,6 @@
             text-align: center;
             color: white;
             overflow: hidden;
-            /* RIPRISTINATA TUA IMMAGINE ORIGINALE */
             background: #000 url("https://images.squarespace-cdn.com");
             background-size: cover;
             background-position: center;
@@ -27,7 +26,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.65); /* IL TUO OSCURAMENTO ORIGINALE */
+            background: rgba(0,0,0,0.65);
             z-index: 1;
         }
 
@@ -46,19 +45,20 @@
         }
 
         .gift-title {
-            font-size: 55px;
-            margin-bottom: 20px;
+            font-size: clamp(2rem, 8vw, 55px);
+            margin-bottom: 10px;
             font-weight: 900;
         }
 
         .concert {
             font-size: clamp(2.5rem, 10vw, 4.5rem);
             font-weight: 900;
-            color: #ff4e8a; /* IL TUO COLORE ORIGINALE */
+            color: #ff4e8a;
             text-shadow: 0 0 20px rgba(255,78,138,0.8);
             margin: 20px 0;
             text-transform: uppercase;
             animation: pulse 2s infinite ease-in-out;
+            line-height: 1.1;
         }
 
         @keyframes pulse {
@@ -69,12 +69,16 @@
         .details {
             font-size: 22px;
             margin-top: 15px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .ti-amo {
-            margin-top: 50px;
+            margin-top: 35px;
             font-family: 'Dancing Script', cursive;
-            font-size: 32px;
+            font-size: 35px;
             color: #ff4e8a;
             display: block;
             animation: glowLove 2.5s infinite;
@@ -89,7 +93,6 @@
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
     </style>
 </head>
 <body onclick="startAudio()">
@@ -105,7 +108,8 @@
     </h1>
 
     <p class="details">
-        Non vedo l'ora di viverlo insieme a te ❤️
+        Non potevo scegliere di meglio che portarti a vedere il King insieme a me. ❤️<br>
+        Non vedo l'ora di viverlo insieme a te.
     </p>
 
     <span class="ti-amo">Ti amo amore mio</span>
@@ -119,18 +123,17 @@
     const audio = document.getElementById("myAudio");
 
     function startAudio() {
-        audio.play().catch(e => console.log("Interazione necessaria"));
+        audio.play().catch(e => console.log("Audio attivo"));
     }
 
-    // Prova avvio forzato
     window.onload = () => {
         audio.volume = 0.8;
+        // Tenta l'auto-play, ma richiede il click dell'utente per policy browser
         audio.play().catch(() => {
-            console.log("Il browser blocca l'audio automatico: clicca sulla pagina.");
+            console.log("Clicca sulla pagina per la musica");
         });
     };
 </script>
 
 </body>
 </html>
-
