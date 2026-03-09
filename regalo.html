@@ -24,8 +24,8 @@ text-align:center;
 color:white;
 overflow:hidden;
 
+/* SFONDO CONCERTO MARRACASH */
 background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
-
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
@@ -138,16 +138,13 @@ audio.play().catch(e => console.log("Audio attivo"));
 }
 
 window.onload = () => {
-
 audio.volume = 0.8;
-
 audio.play().catch(() => console.log("Clicca per musica"));
 
+// Mostra il contenuto dopo 5 secondi
 setTimeout(() => {
-
 document.getElementById("surprise").classList.add("show");
-
-}, 3000);
+}, 5000);
 
 };
 
