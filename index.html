@@ -1,265 +1,242 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buon Compleanno Amore</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff85a1;
+            --accent: #7209b7;
+        }
 
-<meta charset="UTF-8">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-<title>Buon Compleanno Amore</title>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #2d0036 0%, #000 100%);
+            color: white;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+        /* Sfondo animato con gradienti morbidi */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff149333, #7209b733, #06ffa511);
+            filter: blur(100px);
+            z-index: 0;
+            animation: pulse 10s infinite alternate;
+        }
 
-<style>
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        .container {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            max-width: 90%;
+            animation: appear 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
 
-body{
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0.8) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+        h1 {
+            font-family: 'Dancing Script', crossorigin;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(to right, #ff85a1, #f72585, #b5179e, #ff85a1);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            margin-bottom: 10px;
+        }
 
-background: linear-gradient(-45deg,#ff1493,#ff69b4,#ff00ff,#9d4edd,#3a86ff,#06ffa5);
-background-size:600% 600%;
-animation:gradient 18s ease infinite;
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
 
-color:white;
+        h2 {
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
 
-}
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 40px;
+            border-radius: 50%; /* Immagine circolare più elegante */
+            padding: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
 
-@keyframes gradient{
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
 
-0%{background-position:0% 50%;}
-25%{background-position:100% 50%;}
-50%{background-position:50% 100%;}
-75%{background-position:0% 50%;}
-100%{background-position:0% 50%;}
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #000;
+        }
 
-}
+        .btn {
+            position: relative;
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
 
-.container{
+        .btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
+        }
 
-text-align:center;
-z-index:2;
-backdrop-filter:blur(10px);
-background:rgba(255,255,255,0.08);
-padding:40px;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(0,0,0,0.3);
+        /* Cuori che fluttuano */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(255, 77, 109, 0.6);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: heartUp 6s linear infinite;
+        }
 
-animation:fadeUp 2s ease;
+        @keyframes heartUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
 
-}
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-
-}
-
-}
-h1{
-
-font-size:50px;
-font-weight:700;
-margin-bottom:10px;
-
-}
-h2{
-
-font-weight:300;
-margin-bottom:25px;
-
-}
-.photo-frame{
-
-width:300px;
-height:300px;
-
-margin:auto;
-
-border-radius:20px;
-
-overflow:hidden;
-
-position:relative;
-
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-
-}
-
-.photo-frame img{
-
-width:100%;
-height:100%;
-object-fit:cover;
-
-transition:transform 1s;
-
-}
-
-.photo-frame:hover img{
-
-transform:scale(1.1);
-
-}
-
-.btn{
-
-margin-top:30px;
-
-padding:15px 40px;
-
-font-size:20px;
-
-border:none;
-
-border-radius:40px;
-
-cursor:pointer;
-
-background:white;
-
-color:#ff1493;
-
-transition:0.4s;
-
-}
-
-.btn:hover{
-
-transform:scale(1.1);
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-
-}
-
-canvas{
-
-position:absolute;
-top:0;
-left:0;
-
-}
-
-</style>
-
+        canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+    </style>
 </head>
-
 <body>
 
+<div class="bg-glow"></div>
 <canvas id="particles"></canvas>
 
 <div class="container">
+    <h1>Tanti Auguri Amore Mio ❤️</h1>
+    <h2>22 Anni di Te</h2>
 
-<h1>Tanti Auguri Amore Mio ❤️</h1>
+    <div class="photo-frame">
+        <img src="IMG_7455.JPG" alt="La nostra foto">
+    </div>
 
-<h2>Buon 22° Compleanno</h2>
-
-<div class="photo-frame">
-
-<img src="IMG_7455.JPG">
-
+    <a href="regalo.html" class="btn">
+        Apri il tuo regalo fofumato 🎁
+    </a>
 </div>
-
-<br>
-
-<p>
-Questa è solo la prima sorpresa...
-</p>
-
-<br>
-
-<a href="regalo.html">
-
-<button class="btn">
-Scopri il tuo regalino fofumato🎁
-</button>
-
-</a>
-
-</div>
-
-<audio autoplay loop>
-<source src="lei.mp3" type="audio/mpeg">
-</audio>
 
 <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
 
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    let particles = [];
+    const colors = ['#ff4d6d', '#ff85a1', '#7209b7', '#48cae4'];
 
-let particles = [];
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * -1 - 0.5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
 
-const colors = ['rgba(255,20,147,0.8)', 'rgba(255,105,180,0.8)', 'rgba(255,0,255,0.8)', 'rgba(157,78,221,0.8)', 'rgba(58,134,255,0.8)', 'rgba(6,255,165,0.8)'];
+    function init() {
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+    }
 
-for(let i=0;i<120;i++){
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
 
-particles.push({
+    // Creazione cuori dinamici
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+        heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
 
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*4+1,
-speed:Math.random()*1+0.3,
-color:colors[Math.floor(Math.random()*colors.length)]
+    setInterval(createHeart, 400);
+    init();
+    animate();
 
-})
-
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-
-ctx.fillStyle=p.color;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fill();
-
-p.y -= p.speed;
-p.x += Math.sin(p.y*0.01)*0.5;
-
-if(p.y < 0){
-
-p.y = canvas.height;
-p.x = Math.random()*canvas.width;
-
-}
-
-})
-
-requestAnimationFrame(draw);
-
-}
-
-draw();
-
-window.addEventListener('resize',()=>{
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-});
-
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 </script>
 
 </body>
-
 </html>
