@@ -24,14 +24,11 @@ text-align:center;
 color:white;
 overflow:hidden;
 
-/* FOTO CONCERTO MARRACASH */
-
 background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
 
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
-
 }
 
 .overlay{
@@ -44,14 +41,21 @@ background:rgba(0,0,0,0.7);
 .container{
 position:relative;
 z-index:2;
-animation:reveal 3s ease;
 padding:20px;
 }
 
-h2{
-font-weight:300;
-font-size:30px;
-margin-bottom:10px;
+.preparati{
+font-size:40px;
+animation:fadeIn 2s ease;
+}
+
+.reveal{
+opacity:0;
+transition:opacity 2s ease;
+}
+
+.reveal.show{
+opacity:1;
 }
 
 h1{
@@ -82,31 +86,13 @@ animation:pulseLove 2.5s infinite ease-in-out;
 }
 
 @keyframes pulseLove{
-
-0%,100%{
-transform:scale(1);
-opacity:0.8;
+0%,100%{transform:scale(1);opacity:0.8;}
+50%{transform:scale(1.1);opacity:1;}
 }
 
-50%{
-transform:scale(1.1);
-opacity:1;
-}
-
-}
-
-@keyframes reveal{
-
-from{
-opacity:0;
-transform:translateY(50px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 </style>
@@ -118,7 +104,9 @@ transform:translateY(0);
 
 <div class="container">
 
-<h2>Preparati...</h2>
+<h2 class="preparati">Preparati...</h2>
+
+<div class="reveal" id="surprise">
 
 <h1>IL TUO REGALO È</h1>
 
@@ -135,10 +123,10 @@ Non vedo l'ora di viverlo assieme.
 
 </div>
 
+</div>
+
 <audio id="myAudio" loop>
-
 <source src="lei.mp3" type="audio/mpeg">
-
 </audio>
 
 <script>
@@ -150,8 +138,17 @@ audio.play().catch(e => console.log("Audio attivo"));
 }
 
 window.onload = () => {
+
 audio.volume = 0.8;
+
 audio.play().catch(() => console.log("Clicca per musica"));
+
+setTimeout(() => {
+
+document.getElementById("surprise").classList.add("show");
+
+}, 3000);
+
 };
 
 </script>
