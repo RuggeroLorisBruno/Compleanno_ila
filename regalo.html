@@ -16,6 +16,7 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
+
 height:100vh;
 display:flex;
 justify-content:center;
@@ -27,7 +28,7 @@ overflow:hidden;
 background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
 background-size:cover;
 background-position:center;
-background-attachment:fixed;
+
 }
 
 .overlay{
@@ -38,16 +39,26 @@ background:rgba(0,0,0,0.7);
 }
 
 .container{
+
 position:relative;
 z-index:2;
-max-width:700px;
-padding:20px;
+width:90%;
+max-width:800px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
 }
 
 /* PREPARATI */
 
 .preparati{
+
 font-size:40px;
+margin-bottom:20px;
+
 }
 
 /* COUNTDOWN */
@@ -64,18 +75,11 @@ text-shadow:
 0 0 40px #ff4e8a,
 0 0 80px #ff4e8a;
 
-opacity:0;
-transition:opacity 0.5s;
+display:none;
 
 }
 
-/* BLOCCO TESTO */
-
-.textblock{
-margin-top:20px;
-}
-
-/* MARRACASH */
+/* TESTI */
 
 .concert{
 
@@ -133,7 +137,7 @@ transition:opacity 2s;
 </style>
 </head>
 
-<body onclick="startAudio()">
+<body>
 
 <div class="overlay"></div>
 
@@ -142,8 +146,6 @@ transition:opacity 2s;
 <h2 id="preparati" class="preparati">Preparati...</h2>
 
 <div id="countdown" class="countdown">5</div>
-
-<div class="textblock">
 
 <h1 id="concert" class="concert">
 🎤 MARRACASH LIVE 2026 🔥
@@ -159,9 +161,7 @@ Ti amo amore mio
 
 </div>
 
-</div>
-
-<audio id="myAudio" loop>
+<audio id="myAudio" autoplay loop>
 <source src="lei.mp3" type="audio/mpeg">
 </audio>
 
@@ -169,13 +169,11 @@ Ti amo amore mio
 
 const audio=document.getElementById("myAudio");
 
-function startAudio(){
-audio.play().catch(()=>{});
-}
-
 window.onload=()=>{
 
 audio.volume=0.8;
+
+audio.play().catch(()=>{});
 
 setTimeout(startCountdown,3000);
 
@@ -188,7 +186,7 @@ const countdown=document.getElementById("countdown");
 
 preparati.style.display="none";
 
-countdown.style.opacity=1;
+countdown.style.display="block";
 
 let count=5;
 
