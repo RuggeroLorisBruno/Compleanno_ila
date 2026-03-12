@@ -7,85 +7,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  color:white;
-  overflow:hidden;
-  background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+overflow:hidden;
+
+background-image:url("https://images.squarespace-cdn.com/content/v1/5d9b8963d30aa503529bfb1a/1730743187163-ZS8DY2VKZCY5XYZSHTCC/Prova2.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
 .overlay{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  z-index:1;
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:1;
 }
 
 .container{
-  position:relative;
-  z-index:2;
-  padding:20px;
+position:relative;
+z-index:2;
+padding:20px;
 }
 
 .preparati{
-  font-size:40px;
-  animation:fadeIn 2s ease;
+font-size:40px;
+animation:fadeIn 2s ease;
 }
 
 .countdown{
-  font-size:60px;
-  font-weight:700;
-  color:#ff4e8a;
-  text-shadow:0 0 20px rgba(255,78,138,0.8);
-  margin-top:20px;
-  opacity:0;
-  transition:opacity 0.5s ease;
+font-size:60px;
+font-weight:700;
+color:#ff4e8a;
+text-shadow:0 0 20px rgba(255,78,138,0.8);
+margin-top:20px;
+opacity:0;
+transition:opacity 0.5s ease;
 }
 
 .reveal-text{
-  opacity:0;
-  transition:opacity 1s ease;
-  margin-top:20px;
+margin-top:20px;
 }
 
 .concert-title{
-  font-size:clamp(50px,10vw,90px);
-  font-weight:800;
-  color:#ff4e8a;
-  text-shadow: 0 0 10px #fff, 0 0 20px #ff4e8a, 0 0 30px #ff4e8a, 0 0 40px #ff4e8a;
-  line-height:1.1;
-  opacity:0;
+font-size:clamp(60px,10vw,100px);
+font-weight:900;
+color:#ff4e8a;
+text-shadow:0 0 10px #fff,0 0 20px #ff4e8a,0 0 40px #ff4e8a,0 0 80px #ff4e8a;
+line-height:1.1;
+opacity:0;
+transition:opacity 2s ease;
 }
 
 p{
-  font-size:22px;
-  line-height:1.4;
-  opacity:0;
+font-size:22px;
+line-height:1.4;
+opacity:0;
+transition:opacity 2s ease;
 }
 
 .ti-amo{
-  display:block;
-  margin-top:30px;
-  font-family:'Dancing Script',cursive;
-  font-size:40px;
-  color:#ff4e8a;
-  animation:pulseLove 2.5s infinite ease-in-out;
-  opacity:0;
+display:block;
+margin-top:30px;
+font-family:'Dancing Script',cursive;
+font-size:40px;
+color:#ff4e8a;
+animation:pulseLove 2.5s infinite ease-in-out;
+opacity:0;
+transition:opacity 2s ease;
 }
 
 @keyframes pulseLove{
@@ -99,14 +102,15 @@ to{opacity:1;}
 }
 
 canvas{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  pointer-events:none;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
 }
+
 </style>
 </head>
 
@@ -116,96 +120,168 @@ canvas{
 <canvas id="fireworks"></canvas>
 
 <div class="container">
-  <h2 class="preparati">Preparati...</h2>
-  <div class="countdown" id="countdown">5</div>
 
-  <div class="reveal-text" id="concertText">
-    <h1 class="concert-title" id="concertTitle">🎤 MARRACASH LIVE 2026 🔥</h1>
-    <p id="concertPara">Non potevo scegliere di meglio che portarti a vedere il King insieme a me. ❤️<br>Non vedo l'ora di viverlo assieme.</p>
-    <span class="ti-amo" id="concertLove">Ti amo amore mio</span>
-  </div>
+<h2 class="preparati">Preparati...</h2>
+
+<div class="countdown" id="countdown">5</div>
+
+<div class="reveal-text">
+
+<h1 class="concert-title" id="concertTitle">
+MARRACASH LIVE 2026 🎤🔥
+</h1>
+
+<p id="concertPara">
+Non potevo scegliere di meglio che portarti a vedere il King insieme a me ❤️
+<br>
+Sarà una serata incredibile e non vedo l'ora di viverla insieme a te.
+</p>
+
+<span class="ti-amo" id="concertLove">
+Ti amo amore mio
+</span>
+
+</div>
+
 </div>
 
 <audio id="myAudio" loop>
-  <source src="lei.mp3" type="audio/mpeg">
+<source src="lei.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 const audio = document.getElementById("myAudio");
 
 function startAudio(){
-  audio.play().catch(e => console.log("Audio attivo"));
+audio.play().catch(e => console.log("Audio attivo"));
 }
 
 window.onload = () => {
-  audio.volume = 0.8;
-  audio.play().catch(() => console.log("Clicca per musica"));
-  setTimeout(startCountdown,5000);
+
+audio.volume = 0.8;
+
+audio.play().catch(() => console.log("Clicca per musica"));
+
+setTimeout(startCountdown,5000);
+
 };
 
 // COUNTDOWN
+
 function startCountdown(){
-  const countdownEl = document.getElementById("countdown");
-  countdownEl.style.opacity = 1;
-  let count = 5;
-  const interval = setInterval(()=>{
-    countdownEl.textContent = count;
-    count--;
-    if(count<0){
-      clearInterval(interval);
-      countdownEl.style.opacity = 0;
-      showConcertText();
-    }
-  },1000);
+
+const countdownEl = document.getElementById("countdown");
+
+countdownEl.style.opacity = 1;
+
+let count = 5;
+
+const interval = setInterval(()=>{
+
+countdownEl.textContent = count;
+
+count--;
+
+if(count < 0){
+
+clearInterval(interval);
+
+countdownEl.style.opacity = 0;
+
+showConcertText();
+
 }
 
-// REVEAL TESTO E FUOCHI D'ARTIFICIO
+},1000);
+
+}
+
+// REVEAL SEQUENZIALE
+
 function showConcertText(){
-  const title = document.getElementById("concertTitle");
-  const para = document.getElementById("concertPara");
-  const love = document.getElementById("concertLove");
 
-  // mostra la scritta principale
-  title.style.opacity = 1;
-  startFireworks();
+const title = document.getElementById("concertTitle");
+const para = document.getElementById("concertPara");
+const love = document.getElementById("concertLove");
 
-  // le altre scritte dopo 2 secondi
-  setTimeout(()=>{
-    para.style.opacity=1;
-    love.style.opacity=1;
-  },2000);
+title.style.opacity = 1;
+
+startFireworks();
+
+// dopo 2 secondi appare il testo
+
+setTimeout(()=>{
+para.style.opacity = 1;
+},2000);
+
+// dopo altri 2 secondi appare "ti amo"
+
+setTimeout(()=>{
+love.style.opacity = 1;
+},4000);
+
 }
 
 // FUOCHI D'ARTIFICIO
+
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let fireworks = [];
 
 function startFireworks(){
-  setInterval(()=>{ 
-    fireworks.push({x:Math.random()*canvas.width, y:canvas.height, vy:-Math.random()*5-2, size:Math.random()*3+2, opacity:1});
-  },200);
 
-  requestAnimationFrame(updateFireworks);
+setInterval(()=>{
+
+fireworks.push({
+x:Math.random()*canvas.width,
+y:canvas.height,
+vy:-Math.random()*5-2,
+size:Math.random()*3+2,
+opacity:1
+});
+
+},200);
+
+requestAnimationFrame(updateFireworks);
+
 }
 
 function updateFireworks(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  for(let i=0;i<fireworks.length;i++){
-    const f = fireworks[i];
-    ctx.beginPath();
-    ctx.arc(f.x,f.y,f.size,0,Math.PI*2);
-    ctx.fillStyle=`rgba(255,${Math.floor(Math.random()*150+50)},0,${f.opacity})`;
-    ctx.fill();
-    f.y += f.vy;
-    f.opacity -= 0.02;
-    if(f.opacity<=0) fireworks.splice(i,1);
-  }
-  requestAnimationFrame(updateFireworks);
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=0;i<fireworks.length;i++){
+
+const f = fireworks[i];
+
+ctx.beginPath();
+ctx.arc(f.x,f.y,f.size,0,Math.PI*2);
+
+ctx.fillStyle=`rgba(255,${Math.floor(Math.random()*150+50)},0,${f.opacity})`;
+
+ctx.fill();
+
+f.y += f.vy;
+
+f.opacity -= 0.02;
+
+if(f.opacity <= 0){
+
+fireworks.splice(i,1);
+
 }
+
+}
+
+requestAnimationFrame(updateFireworks);
+
+}
+
 </script>
 
 </body>
