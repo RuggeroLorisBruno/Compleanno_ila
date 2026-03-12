@@ -49,28 +49,58 @@ font-size:40px;
 animation:fadeIn 2s ease;
 }
 
+/* COUNTDOWN GIGANTE */
+
 .countdown{
-font-size:60px;
-font-weight:700;
-color:#ff4e8a;
-text-shadow:0 0 20px rgba(255,78,138,0.8);
+font-size:clamp(120px,20vw,250px);
+font-weight:900;
+color:white;
+text-shadow:
+0 0 20px #ff4e8a,
+0 0 40px #ff4e8a,
+0 0 80px #ff4e8a;
 margin-top:20px;
 opacity:0;
 transition:opacity 0.5s ease;
 }
 
-.reveal-text{
-margin-top:20px;
-}
+/* TITOLO CONCERTO */
 
 .concert-title{
-font-size:clamp(60px,10vw,100px);
+
+font-size:clamp(70px,12vw,140px);
 font-weight:900;
+
 color:#ff4e8a;
-text-shadow:0 0 10px #fff,0 0 20px #ff4e8a,0 0 40px #ff4e8a,0 0 80px #ff4e8a;
-line-height:1.1;
+
+text-shadow:
+0 0 10px white,
+0 0 30px #ff4e8a,
+0 0 60px #ff4e8a,
+0 0 120px #ff4e8a;
+
 opacity:0;
-transition:opacity 2s ease;
+
+animation:glowPulse 2s infinite alternate;
+
+}
+
+@keyframes glowPulse{
+
+from{
+text-shadow:
+0 0 10px white,
+0 0 30px #ff4e8a,
+0 0 60px #ff4e8a;
+}
+
+to{
+text-shadow:
+0 0 20px white,
+0 0 60px #ff4e8a,
+0 0 120px #ff4e8a;
+}
+
 }
 
 p{
@@ -78,6 +108,7 @@ font-size:22px;
 line-height:1.4;
 opacity:0;
 transition:opacity 2s ease;
+margin-top:20px;
 }
 
 .ti-amo{
@@ -92,16 +123,22 @@ transition:opacity 2s ease;
 }
 
 @keyframes pulseLove{
+
 0%,100%{transform:scale(1);opacity:0.8;}
+
 50%{transform:scale(1.1);opacity:1;}
+
 }
 
 @keyframes fadeIn{
+
 from{opacity:0;}
 to{opacity:1;}
+
 }
 
 canvas{
+
 position:absolute;
 top:0;
 left:0;
@@ -109,6 +146,7 @@ width:100%;
 height:100%;
 z-index:0;
 pointer-events:none;
+
 }
 
 </style>
@@ -117,6 +155,7 @@ pointer-events:none;
 <body onclick="startAudio()">
 
 <div class="overlay"></div>
+
 <canvas id="fireworks"></canvas>
 
 <div class="container">
@@ -125,10 +164,8 @@ pointer-events:none;
 
 <div class="countdown" id="countdown">5</div>
 
-<div class="reveal-text">
-
 <h1 class="concert-title" id="concertTitle">
-MARRACASH LIVE 2026 🎤🔥
+MARRACASH LIVE 2026
 </h1>
 
 <p id="concertPara">
@@ -140,8 +177,6 @@ Sarà una serata incredibile e non vedo l'ora di viverla insieme a te.
 <span class="ti-amo" id="concertLove">
 Ti amo amore mio
 </span>
-
-</div>
 
 </div>
 
@@ -161,13 +196,11 @@ window.onload = () => {
 
 audio.volume = 0.8;
 
-audio.play().catch(() => console.log("Clicca per musica"));
+audio.play().catch(()=>{});
 
 setTimeout(startCountdown,5000);
 
 };
-
-// COUNTDOWN
 
 function startCountdown(){
 
@@ -197,8 +230,6 @@ showConcertText();
 
 }
 
-// REVEAL SEQUENZIALE
-
 function showConcertText(){
 
 const title = document.getElementById("concertTitle");
@@ -207,45 +238,51 @@ const love = document.getElementById("concertLove");
 
 title.style.opacity = 1;
 
-startFireworks();
+explodeFireworks();
 
-// dopo 2 secondi appare il testo
+// testo dopo 2 secondi
 
 setTimeout(()=>{
+
 para.style.opacity = 1;
+
 },2000);
 
-// dopo altri 2 secondi appare "ti amo"
+// ti amo dopo altri 2 secondi
 
 setTimeout(()=>{
+
 love.style.opacity = 1;
+
 },4000);
 
 }
 
-// FUOCHI D'ARTIFICIO
+/* FUOCHI D'ARTIFICIO */
 
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let fireworks = [];
+let particles=[];
 
-function startFireworks(){
+function explodeFireworks(){
 
-setInterval(()=>{
+for(let i=0;i<80;i++){
 
-fireworks.push({
-x:Math.random()*canvas.width,
-y:canvas.height,
-vy:-Math.random()*5-2,
-size:Math.random()*3+2,
-opacity:1
+particles.push({
+
+x:canvas.width/2,
+y:canvas.height/2,
+vx:(Math.random()-0.5)*8,
+vy:(Math.random()-0.5)*8,
+life:100
+
 });
 
-},200);
+}
 
 requestAnimationFrame(updateFireworks);
 
@@ -255,28 +292,25 @@ function updateFireworks(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-for(let i=0;i<fireworks.length;i++){
-
-const f = fireworks[i];
+particles.forEach((p,i)=>{
 
 ctx.beginPath();
-ctx.arc(f.x,f.y,f.size,0,Math.PI*2);
 
-ctx.fillStyle=`rgba(255,${Math.floor(Math.random()*150+50)},0,${f.opacity})`;
+ctx.arc(p.x,p.y,3,0,Math.PI*2);
+
+ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
 
 ctx.fill();
 
-f.y += f.vy;
+p.x+=p.vx;
 
-f.opacity -= 0.02;
+p.y+=p.vy;
 
-if(f.opacity <= 0){
+p.life--;
 
-fireworks.splice(i,1);
+if(p.life<=0) particles.splice(i,1);
 
-}
-
-}
+});
 
 requestAnimationFrame(updateFireworks);
 
