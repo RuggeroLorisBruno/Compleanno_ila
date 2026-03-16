@@ -1,6 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,7 +31,7 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
+overflow-x:hidden;
 background:radial-gradient(circle at center,#2d0036 0%,#000 100%);
 color:white;
 }
@@ -71,7 +74,7 @@ opacity:0.8;
 50%{transform:translateY(-15px);}
 }
 
-/* SFONDO */
+/* SFONDO GLOW */
 
 .bg-glow{
 position:absolute;
@@ -206,11 +209,14 @@ pointer-events:none;
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- INTRO -->
+<!-- INTRO REGALO -->
+
 <div id="intro">
 
 <div class="gift-box" id="gift">
@@ -223,10 +229,12 @@ pointer-events:none;
 
 
 <div class="bg-glow"></div>
+
 <canvas id="particles"></canvas>
 
 
 <!-- PAGINA PRINCIPALE -->
+
 <div class="container" id="mainPage" style="display:none;">
 
 <h1>Tanti Auguri Amore Mio ❤️</h1>
@@ -234,11 +242,13 @@ pointer-events:none;
 <h2>22 Anni di Te</h2>
 
 <div class="photo-frame">
-<img src="IMG_7455.JPG">
+
+<img src="IMG_7455.JPG" alt="La nostra foto">
+
 </div>
 
 <a href="regalo.html" class="btn">
-Apri il tuo regalo profumato 🎁
+Apri il tuo regalo fofumato 🎁
 </a>
 
 </div>
@@ -248,17 +258,19 @@ Apri il tuo regalo profumato 🎁
 
 /* APERTURA REGALO */
 
-const gift = document.getElementById("gift");
-const intro = document.getElementById("intro");
-const mainPage = document.getElementById("mainPage");
+const gift=document.getElementById("gift");
+const intro=document.getElementById("intro");
+const mainPage=document.getElementById("mainPage");
 
 gift.addEventListener("click",()=>{
 
 gift.classList.add("open");
 
 setTimeout(()=>{
+
 intro.style.display="none";
 mainPage.style.display="block";
+
 },1200);
 
 });
@@ -323,6 +335,7 @@ requestAnimationFrame(animate);
 
 }
 
+
 /* CUORI */
 
 function createHeart(){
@@ -358,3 +371,4 @@ canvas.height=window.innerHeight;
 
 </body>
 </html>
+```
