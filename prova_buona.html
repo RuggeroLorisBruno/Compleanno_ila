@@ -44,6 +44,7 @@ position:relative;
 z-index:2;
 width:90%;
 max-width:800px;
+min-height:300px;
 
 display:flex;
 flex-direction:column;
@@ -56,7 +57,7 @@ align-items:center;
 
 .preparati{
 font-size:40px;
-margin-bottom:40px;
+margin-bottom:20px;
 }
 
 /* COUNTDOWN */
@@ -75,8 +76,6 @@ text-shadow:
 
 display:none;
 
-margin-top:40px; /* FIX POSIZIONE */
-
 }
 
 /* TITOLO CONCERTO */
@@ -86,12 +85,12 @@ margin-top:40px; /* FIX POSIZIONE */
 font-size:clamp(60px,10vw,100px);
 font-weight:900;
 
-color:#FFD700; /* NUOVO COLORE ORO */
+color:#ffd700;
 
 text-shadow:
-0 0 10px white,
-0 0 30px #FFD700,
-0 0 60px #FFD700;
+0 0 10px #fff,
+0 0 30px #ffd700,
+0 0 60px #ffd700;
 
 margin-bottom:20px;
 
@@ -106,16 +105,16 @@ animation:glowTitle 3s infinite alternate;
 
 from{
 text-shadow:
-0 0 10px white,
-0 0 30px #FFD700,
-0 0 60px #FFD700;
+0 0 10px #fff,
+0 0 30px #ffd700,
+0 0 60px #ffd700;
 }
 
 to{
 text-shadow:
-0 0 20px white,
-0 0 50px #FFD700,
-0 0 100px #FFD700;
+0 0 20px #fff,
+0 0 50px #ffd700,
+0 0 100px #ffd700;
 }
 
 }
@@ -222,8 +221,6 @@ setTimeout(startCountdown,3000);
 
 }
 
-/* COUNTDOWN */
-
 function startCountdown(){
 
 const preparati=document.getElementById("preparati");
@@ -255,8 +252,6 @@ showText();
 
 }
 
-/* MOSTRA TESTI */
-
 function showText(){
 
 const concert=document.getElementById("concert");
@@ -274,8 +269,6 @@ love.style.opacity=1;
 },4000);
 
 }
-
-/* GENERA CUORI */
 
 function createHeart(){
 
