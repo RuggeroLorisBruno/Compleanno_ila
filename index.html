@@ -1,241 +1,359 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buon Compleanno Amore</title>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #ff4d6d;
-            --secondary: #ff85a1;
-            --accent: #7209b7;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+<title>Buon Compleanno Amore</title>
 
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background: radial-gradient(circle at center, #2d0036 0%, #000 100%);
-            color: white;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-        /* Sfondo animato con gradienti morbidi */
-        .bg-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff149333, #7209b733, #06ffa511);
-            filter: blur(100px);
-            z-index: 0;
-            animation: pulse 10s infinite alternate;
-        }
+<style>
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.8; }
-        }
+:root{
+--primary:#ff4d6d;
+--secondary:#ff85a1;
+--accent:#7209b7;
+}
 
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-            backdrop-filter: blur(15px);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 50px 30px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            max-width: 90%;
-            animation: appear 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-        @keyframes appear {
-            from { opacity: 0; transform: scale(0.8) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:radial-gradient(circle at center,#2d0036 0%,#000 100%);
+color:white;
+}
 
-        h1 {
-            font-family: 'Dancing Script', crossorigin;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            background: linear-gradient(to right, #ff85a1, #f72585, #b5179e, #ff85a1);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-            margin-bottom: 10px;
-        }
+/* INTRO REGALO */
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#2d0036,#000);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:999;
+text-align:center;
+}
 
-        h2 {
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--secondary);
-        }
+.gift-box{
+font-size:90px;
+cursor:pointer;
+animation:bounce 2s infinite;
+transition:transform 0.6s ease, opacity 0.6s;
+}
 
-        .photo-frame {
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 40px;
-            border-radius: 50%; /* Immagine circolare più elegante */
-            padding: 10px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            box-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
-            position: relative;
-            animation: float 4s ease-in-out infinite;
-        }
+.gift-box.open{
+transform:scale(2) rotate(20deg);
+opacity:0;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+.gift-text{
+margin-top:20px;
+font-size:1.3rem;
+opacity:0.8;
+}
 
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #000;
-        }
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
 
-        .btn {
-            position: relative;
-            padding: 18px 45px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background: white;
-            color: #000;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
+/* SFONDO */
 
-        .btn:hover {
-            transform: scale(1.05) translateY(-3px);
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
-        }
+.bg-glow{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(45deg,#ff149333,#7209b733,#06ffa511);
+filter:blur(100px);
+z-index:0;
+animation:pulse 10s infinite alternate;
+}
 
-        /* Cuori che fluttuano */
-        .heart {
-            position: absolute;
-            bottom: -20px;
-            color: rgba(255, 77, 109, 0.6);
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
-            animation: heartUp 6s linear infinite;
-        }
+@keyframes pulse{
+0%{transform:scale(1);opacity:0.5;}
+100%{transform:scale(1.2);opacity:0.8;}
+}
 
-        @keyframes heartUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
+/* CONTENUTO PRINCIPALE */
 
-        canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
-    </style>
+.container{
+position:relative;
+text-align:center;
+z-index:2;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.05);
+padding:50px 30px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 25px 50px rgba(0,0,0,0.5);
+max-width:90%;
+animation:appear 1.5s cubic-bezier(0.17,0.67,0.83,0.67);
+}
+
+@keyframes appear{
+from{opacity:0;transform:scale(0.8) translateY(30px);}
+to{opacity:1;transform:scale(1) translateY(0);}
+}
+
+h1{
+font-family:'Dancing Script',cursive;
+font-size:clamp(2.5rem,8vw,4rem);
+background:linear-gradient(to right,#ff85a1,#f72585,#b5179e,#ff85a1);
+background-size:200% auto;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 3s linear infinite;
+margin-bottom:10px;
+}
+
+@keyframes shine{
+to{background-position:200% center;}
+}
+
+h2{
+font-weight:300;
+letter-spacing:3px;
+text-transform:uppercase;
+font-size:1.2rem;
+margin-bottom:30px;
+color:var(--secondary);
+}
+
+.photo-frame{
+width:280px;
+height:280px;
+margin:0 auto 40px;
+border-radius:50%;
+padding:10px;
+background:linear-gradient(45deg,var(--primary),var(--accent));
+box-shadow:0 0 30px rgba(255,77,109,0.4);
+position:relative;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+.photo-frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+border:4px solid #000;
+}
+
+/* BOTTONE */
+
+.btn{
+padding:18px 45px;
+font-size:1.1rem;
+font-weight:600;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:white;
+color:#000;
+text-decoration:none;
+display:inline-block;
+transition:all 0.3s ease;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn:hover{
+transform:scale(1.05) translateY(-3px);
+background:var(--primary);
+color:white;
+box-shadow:0 15px 30px rgba(255,77,109,0.4);
+}
+
+/* CUORI */
+
+.heart{
+position:absolute;
+bottom:-20px;
+color:rgba(255,77,109,0.6);
+font-size:20px;
+pointer-events:none;
+animation:heartUp 6s linear infinite;
+}
+
+@keyframes heartUp{
+0%{transform:translateY(0) rotate(0deg);opacity:1;}
+100%{transform:translateY(-100vh) rotate(360deg);opacity:0;}
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+</style>
 </head>
+
 <body>
+
+<!-- INTRO -->
+<div id="intro">
+
+<div class="gift-box" id="gift">
+🎁
+</div>
+
+<p class="gift-text">Ho una sorpresa per te...</p>
+
+</div>
+
 
 <div class="bg-glow"></div>
 <canvas id="particles"></canvas>
 
-<div class="container">
-    <h1>Tanti Auguri Amore Mio ❤️</h1>
-    <h2>22 Anni di Te</h2>
 
-    <div class="photo-frame">
-        <img src="IMG_7455.JPG" alt="La nostra foto">
-    </div>
+<!-- PAGINA PRINCIPALE -->
+<div class="container" id="mainPage" style="display:none;">
 
-    <a href="regalo.html" class="btn">
-        Apri il tuo regalo fofumato 🎁
-    </a>
+<h1>Tanti Auguri Amore Mio ❤️</h1>
+
+<h2>22 Anni di Te</h2>
+
+<div class="photo-frame">
+<img src="IMG_7455.JPG">
 </div>
 
+<a href="regalo.html" class="btn">
+Apri il tuo regalo profumato 🎁
+</a>
+
+</div>
+
+
 <script>
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+/* APERTURA REGALO */
 
-    let particles = [];
-    const colors = ['#ff4d6d', '#ff85a1', '#7209b7', '#48cae4'];
+const gift = document.getElementById("gift");
+const intro = document.getElementById("intro");
+const mainPage = document.getElementById("mainPage");
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * -1 - 0.5;
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-        }
-        update() {
-            this.y += this.speedY;
-            this.x += this.speedX;
-            if (this.y < 0) this.y = canvas.height;
-        }
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
+gift.addEventListener("click",()=>{
 
-    function init() {
-        for (let i = 0; i < 100; i++) {
-            particles.push(new Particle());
-        }
-    }
+gift.classList.add("open");
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        requestAnimationFrame(animate);
-    }
+setTimeout(()=>{
+intro.style.display="none";
+mainPage.style.display="block";
+},1200);
 
-    // Creazione cuori dinamici
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-        heart.style.fontSize = Math.random() * 15 + 10 + 'px';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }
+});
 
-    setInterval(createHeart, 400);
-    init();
-    animate();
 
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+/* PARTICELLE */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+const colors=['#ff4d6d','#ff85a1','#7209b7','#48cae4'];
+
+class Particle{
+
+constructor(){
+this.x=Math.random()*canvas.width;
+this.y=Math.random()*canvas.height;
+this.size=Math.random()*3+1;
+this.speedX=Math.random()*1-0.5;
+this.speedY=Math.random()*-1-0.5;
+this.color=colors[Math.floor(Math.random()*colors.length)];
+}
+
+update(){
+this.y+=this.speedY;
+this.x+=this.speedX;
+if(this.y<0)this.y=canvas.height;
+}
+
+draw(){
+ctx.fillStyle=this.color;
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fill();
+}
+
+}
+
+function init(){
+
+for(let i=0;i<100;i++){
+particles.push(new Particle());
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.update();
+p.draw();
+});
+
+requestAnimationFrame(animate);
+
+}
+
+/* CUORI */
+
+function createHeart(){
+
+const heart=document.createElement('div');
+
+heart.className='heart';
+heart.innerHTML='❤️';
+
+heart.style.left=Math.random()*100+'vw';
+heart.style.animationDuration=Math.random()*3+3+'s';
+heart.style.fontSize=Math.random()*15+10+'px';
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+}
+
+setInterval(createHeart,400);
+
+init();
+animate();
+
+window.addEventListener('resize',()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
 </script>
 
 </body>
