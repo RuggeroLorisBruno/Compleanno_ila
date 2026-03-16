@@ -55,10 +55,8 @@ align-items:center;
 /* PREPARATI */
 
 .preparati{
-
 font-size:40px;
 margin-bottom:20px;
-
 }
 
 /* COUNTDOWN */
@@ -79,7 +77,7 @@ display:none;
 
 }
 
-/* TESTI */
+/* TITOLO CONCERTO */
 
 .concert{
 
@@ -98,7 +96,29 @@ margin-bottom:20px;
 opacity:0;
 transition:opacity 2s;
 
+animation:glowTitle 3s infinite alternate;
+
 }
+
+@keyframes glowTitle{
+
+from{
+text-shadow:
+0 0 10px white,
+0 0 30px #ff4e8a,
+0 0 60px #ff4e8a;
+}
+
+to{
+text-shadow:
+0 0 20px white,
+0 0 50px #ff4e8a,
+0 0 100px #ff4e8a;
+}
+
+}
+
+/* TESTI */
 
 .phrase{
 
@@ -134,6 +154,25 @@ transition:opacity 2s;
 
 }
 
+/* CUORI CHE CADONO */
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+color:#ff4e8a;
+animation:fall linear forwards;
+pointer-events:none;
+z-index:3;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+
 </style>
 </head>
 
@@ -153,10 +192,12 @@ transition:opacity 2s;
 
 <p id="phrase" class="phrase">
 Non potevo scegliere regalo migliore che vivere questo concerto insieme a te ❤️
+<br><br>
+Sarà una notte indimenticabile.
 </p>
 
 <span id="love" class="ti-amo">
-Ti amo amore mio
+Ti amo amore mio ❤️  
 </span>
 
 </div>
@@ -178,6 +219,8 @@ audio.play().catch(()=>{});
 setTimeout(startCountdown,3000);
 
 }
+
+/* COUNTDOWN */
 
 function startCountdown(){
 
@@ -210,6 +253,8 @@ showText();
 
 }
 
+/* MOSTRA TESTI */
+
 function showText(){
 
 const concert=document.getElementById("concert");
@@ -219,18 +264,37 @@ const love=document.getElementById("love");
 concert.style.opacity=1;
 
 setTimeout(()=>{
-
 phrase.style.opacity=1;
-
 },2000);
 
 setTimeout(()=>{
-
 love.style.opacity=1;
-
 },4000);
 
 }
+
+/* GENERA CUORI */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.classList.add("heart");
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,400);
 
 </script>
 
