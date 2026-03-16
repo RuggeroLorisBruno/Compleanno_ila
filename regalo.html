@@ -63,6 +63,11 @@ margin-bottom:20px;
 
 .countdown{
 
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
 font-size:clamp(120px,18vw,220px);
 font-weight:900;
 
@@ -192,12 +197,10 @@ opacity:0;
 
 <p id="phrase" class="phrase">
 Non potevo scegliere regalo migliore che vivere questo concerto insieme a te ❤️
-<br><br>
-Sarà una notte indimenticabile.
 </p>
 
 <span id="love" class="ti-amo">
-Ti amo amore mio ❤️  
+Ti amo amore mio ❤️
 </span>
 
 </div>
@@ -219,8 +222,6 @@ audio.play().catch(()=>{});
 setTimeout(startCountdown,3000);
 
 }
-
-/* COUNTDOWN */
 
 function startCountdown(){
 
@@ -253,8 +254,6 @@ showText();
 
 }
 
-/* MOSTRA TESTI */
-
 function showText(){
 
 const concert=document.getElementById("concert");
@@ -272,8 +271,6 @@ love.style.opacity=1;
 },4000);
 
 }
-
-/* GENERA CUORI */
 
 function createHeart(){
 
